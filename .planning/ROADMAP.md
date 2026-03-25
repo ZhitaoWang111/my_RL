@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Environment** - conda 环境 + 预训练权重 + 验证命令全部就绪
 - [ ] **Phase 2: Training Pipeline** - pen Round 1 三步流水线在 4090 / A100 / NPU 三类硬件全部跑通
-- [ ] **Phase 3: Multi-task** - 训练脚本参数化，新任务无需复制脚本即可接入
+- [ ] **Phase 3: NPU Training** - 数据传输到昇腾服务器 + Kai0 预训练 + fold_cloth 微调
 - [ ] **Phase 4: Closed Loop** - PiPER 真机部署 + rollout 数据采集 + Round 2 完整迭代
 
 ## Phase Details
@@ -45,14 +45,21 @@ Plans:
 - [x] 02-01-PLAN.md — A100 部署脚本（rsync_to_a100.sh、rsync_weights_to_a100.sh、setup_a100_env.sh）[TRAIN-02, TRAIN-04]
 - [x] 02-02-PLAN.md — A100 训练脚本（train_pen_A100.sh、smoke_test_A100.sh）[TRAIN-01, TRAIN-02, TRAIN-03, TRAIN-04]
 
-### Phase 3: Multi-task
-**Goal**: 训练脚本通过参数切换任务，新任务无需复制脚本即可接入
+### Phase 3: NPU Training
+**Goal**: fold_cloth 任务在昇腾 NPU（2 卡）上完整跑通分阶段训练：
+         先在 Kai0 开源数据集跑 Round 1（value-train → value-infer → policy-train），
+         再从 Round 1 checkpoint 在 fold_cloth 上 fine-tune Round 2
 **Depends on**: Phase 2
-**Requirements**: TASK-01, TASK-02
+**Requirements**: TRAIN-03
 **Success Criteria** (what must be TRUE):
-  1. 向训练脚本传入不同的任务名和数据集路径参数，脚本无需修改即可切换任务运行
-  2. 为新任务只提供数据集路径和特征配置（关节切片、相机排除）后，三步训练流程可正常执行
-**Plans**: TBD
+  1. rsync_to_npu.sh 和 rsync_data_to_npu.sh 可将代码+数据同步到昇腾服务器
+  2. train_kai0_npu.sh 在 NPU 上完整跑通 3 步流水线（Kai0 数据集，全 14 维）
+  3. train_cloth_npu.sh 在 NPU 上完整跑通 3 步流水线（fold_cloth，从 Kai0 checkpoint 加载 policy）
+  4. 两个脚本特征选择均为全 14 维（STATE_SLICE="", ACTION_SLICE="", EXCLUDE_CAMERAS=""）
+**Plans:** 2 plans
+Plans:
+- [ ] 03-01-PLAN.md — NPU rsync 脚本（rsync_to_npu.sh、rsync_data_to_npu.sh）[TRAIN-03]
+- [ ] 03-02-PLAN.md — NPU 训练脚本（train_kai0_npu.sh、train_cloth_npu.sh）[TRAIN-03]
 
 ### Phase 4: Closed Loop
 **Goal**: 在 PiPER 真机上完成 policy 部署、rollout 数据采集和 Round 2 完整迭代，验证闭环 RL 可行性
@@ -73,5 +80,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Environment | 0/1 | Planning complete | - |
 | 2. Training Pipeline | 1/2 | In Progress|  |
-| 3. Multi-task | 0/? | Not started | - |
+| 3. NPU Training | 0/2 | Planning complete | - |
 | 4. Closed Loop | 0/? | Not started | - |
