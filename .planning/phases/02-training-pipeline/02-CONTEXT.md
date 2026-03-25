@@ -92,15 +92,21 @@ Phase 2 交付两件事：
   | `VALUE_TRAIN_BATCH` | 8 | 8（可选：16）|
   | `PI05_BATCH` | 8 | 8（可选：16）|
   | 注释标题 | "2x RTX 4090 (24GB)" | "4x A100 (80GB)" |
-- **D-24:** 特征选择（相机排除、关节切片）与 4090 版本保持一致：
-  - `EXCLUDE_CAMERAS='["observation.images.right_wrist_right"]'`
-  - `STATE_SLICE="0:7"`, `ACTION_SLICE="0:7"`
+- **D-24:** **特征选择：fold_cloth 任务使用全部 14 维动作空间，不屏蔽右臂数据**
+  - `EXCLUDE_CAMERAS=""`（空字符串，保留全部 3 个相机）
+  - `STATE_SLICE=""`（空字符串，使用全部 14 维状态）
+  - `ACTION_SLICE=""`（空字符串，使用全部 14 维动作）
+  - 与 4090 脚本的 `STATE_SLICE="0:7"` / `ACTION_SLICE="0:7"` 不同，不能直接复制
+
+- **D-25:** Phase 2 必须交付两个脚本：
+  1. `train_pen_A100.sh` — 正式训练脚本（完整 3 阶段，大步数）
+  2. `smoke_test_A100.sh` — 冒烟测试脚本（验证环境就绪，小步数快速跑通）
 
 ### Claude 自由决定
 
 - rsync 脚本是合并一个（含 code/weights/all 子命令）还是分两个文件
-- setup_a100_env.sh 是否包含 smoke test（import torch; assert CUDA）
-- 是否创建单独的 smoke_test_A100.sh（类似 smoke_test_4090.sh 的精简版）
+- smoke_test_A100.sh 的具体步数（参考 smoke_test_4090.sh 的配置）
+- setup_a100_env.sh 的具体结构
 
 </decisions>
 
