@@ -29,8 +29,8 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. 环境验证命令在 10 秒内输出 CUDA 可用、依赖版本、权重路径均通过的确认信息
 **Plans:** 2 plans
 Plans:
-- [ ] 01-01-PLAN.md — Weight download script + user verification (ENV-02)
-- [ ] 01-02-PLAN.md — Environment verification script + setup documentation (ENV-01, ENV-03)
+- [ ] 01-01-PLAN.md — Weight download script (download_weights.sh) + A100 rsync script (rsync_to_a100.sh) [ENV-02]
+- [ ] 01-02-PLAN.md — Environment verification script (verify_env.py) + setup documentation (setup_guide.md) [ENV-01, ENV-03]
 
 ### Phase 2: Training Pipeline
 **Goal**: pen Round 1 三步训练流水线（value-train → value-infer → policy-train）在全部三类硬件上可独立运行完毕
