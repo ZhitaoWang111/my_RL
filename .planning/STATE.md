@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v3.0
 milestone_name: milestone
-status: Ready to execute
-stopped_at: Completed 03-01-PLAN.md (NPU rsync scripts)
-last_updated: "2026-03-25T16:26:15.050Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 03-02-PLAN.md (NPU training scripts — merged 2-round)
+last_updated: "2026-03-25T16:31:43.050Z"
 progress:
   total_phases: 4
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 5
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # Project State
@@ -49,6 +49,7 @@ Plan: 2 of 2
 | Phase 02 P02 | 4 | 2 tasks | 2 files |
 | Phase 02 P01 | 8 | 3 tasks | 3 files |
 | Phase 03 P01 | 4m | 2 tasks | 2 files |
+| Phase 03-npu-training P02 | 3min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,7 @@ Recent decisions affecting current work:
 - [Phase 02]: rsync_weights_to_a100.sh checks source disk mount existence before transfer
 - [Phase 02]: SSH port hardcoded as literal 10322 in rsync -e argument for grep-able verification
 - [Phase 03]: rsync_data_to_npu.sh is single file with both datasets in sequence; NPU_PORT=31274 as variable + literal hardcode in -e args for display and grep-ability
+- [Phase 03-npu-training]: Merged Kai0+fold_cloth into single train_cloth_full_npu.sh: continuous 2-round training on 2x Ascend 910B without manual intervention between rounds
 
 ### Pending Todos
 
@@ -87,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T16:26:15.048Z
-Stopped at: Completed 03-01-PLAN.md (NPU rsync scripts)
+Last session: 2026-03-25T16:31:43.049Z
+Stopped at: Completed 03-02-PLAN.md (NPU training scripts — merged 2-round)
 Resume file: None

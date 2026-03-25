@@ -59,7 +59,7 @@ Plans:
 **Plans:** 1/2 plans executed
 Plans:
 - [x] 03-01-PLAN.md — NPU rsync 脚本（rsync_to_npu.sh、rsync_data_to_npu.sh）[TRAIN-03]
-- [ ] 03-02-PLAN.md — NPU 训练脚本（train_kai0_npu.sh、train_cloth_npu.sh）[TRAIN-03]
+- [x] 03-02-PLAN.md — NPU 训练脚本（train_kai0_npu.sh、train_cloth_npu.sh）[TRAIN-03]
 
 ### Phase 4: Closed Loop
 **Goal**: 在 PiPER 真机上完成 policy 部署、rollout 数据采集和 Round 2 完整迭代，验证闭环 RL 可行性
