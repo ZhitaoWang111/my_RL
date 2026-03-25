@@ -40,7 +40,10 @@ Plans:
   2. 在多卡 A100 上执行 `A100.sh`，三步流水线全部无报错完成
   3. 在华为 NPU（8 卡）上执行 `npu.sh`，三步流水线全部无报错完成
   4. 三个脚本各自独立维护，batch size 和 GPU 配置分别按设备显存适配，互不耦合
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — A100 部署脚本（rsync_to_a100.sh、rsync_weights_to_a100.sh、setup_a100_env.sh）[TRAIN-02, TRAIN-04]
+- [ ] 02-02-PLAN.md — A100 训练脚本（train_pen_A100.sh、smoke_test_A100.sh）[TRAIN-01, TRAIN-02, TRAIN-03, TRAIN-04]
 
 ### Phase 3: Multi-task
 **Goal**: 训练脚本通过参数切换任务，新任务无需复制脚本即可接入
@@ -69,6 +72,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Environment | 0/1 | Planning complete | - |
-| 2. Training Pipeline | 0/? | Not started | - |
+| 2. Training Pipeline | 0/2 | Planning complete | - |
 | 3. Multi-task | 0/? | Not started | - |
 | 4. Closed Loop | 0/? | Not started | - |
