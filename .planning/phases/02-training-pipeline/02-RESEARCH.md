@@ -49,9 +49,10 @@
   | `PI05_BATCH` | 8 | 8（可选：16）|
   | 注释标题 | "2x RTX 4090 (24GB)" | "4x A100 (80GB)" |
 
-- **D-24:** 特征选择（相机排除、关节切片）与 4090 版本保持一致：
-  - `EXCLUDE_CAMERAS='["observation.images.right_wrist_right"]'`
-  - `STATE_SLICE="0:7"`, `ACTION_SLICE="0:7"`
+- **D-24:** 特征选择（相机排除、关节切片）**适用于 fold_cloth 数据集**（14 维全保留）：
+  - `EXCLUDE_CAMERAS=""`（不排除任何相机）
+  - `STATE_SLICE=""`, `ACTION_SLICE=""`（不做切片，保留全 14 维）
+  - ⚠️ **CONTEXT.md D-24 优先于本文档任何其他引用**：上方的 pen 数据集值（right_wrist_right / 0:7）仅适用于 pen 任务，对 fold_cloth 无效。train_pen_A100.sh 中对应变量必须置为空字符串。
 
 ### Claude's Discretion
 
