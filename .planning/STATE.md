@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** 在 PiPER 真机上完整跑通一轮 offline-to-online RL 训练迭代
-**Current focus:** Phase 1 - Environment
+**Current focus:** Phase 1 - 数据兼容性检查（方向已更新）
 
 ## Current Position
 
 Phase: 1 of 4 (Environment)
 Plan: 0 of ? in current phase
 Status: Ready to plan
-Last activity: 2026-03-25 — Roadmap created, Phase 1 ready to plan
+Last activity: 2026-03-25 — Phase 1 重新聚焦：数据兼容性检查（fold_cloth v3.0 + Kai0 v2.1 → 3阶段训练）
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -52,8 +52,16 @@ None yet.
 
 ### Blockers/Concerns
 
-- 预训练权重（pi05_base、siglip-so400m-patch14-384、gemma-3-270m）尚未下载，Phase 1 的核心工作项
-- 当前系统检测到 1 卡 RTX 4090，多卡和 NPU 脚本需在对应硬件上分别验证
+- **[NEW]** Kai0 parquet 文件是 Git LFS 指针，需先 `git lfs pull` 才能使用
+- **[NEW]** Kai0 v2.1 格式需迁移到 v3.0 后才能进入 3 阶段训练
+- **[DEFERRED]** 预训练权重（pi05_base、siglip-so400m-patch14-384、gemma-3-270m）尚未下载 — Phase 2 前处理
+- **[DEFERRED]** 当前系统检测到 1 卡 RTX 4090，多卡和 NPU 脚本需在对应硬件上分别验证 — Phase 2
+
+### Deferred Plans
+
+以下旧 Phase 1 计划已搁置，Phase 2 开始前再恢复：
+- `01-01-PLAN.md` — download_weights.sh + rsync_to_a100.sh [ENV-02]
+- `01-02-PLAN.md` — verify_env.py + setup_guide.md [ENV-01, ENV-03]
 
 ## Session Continuity
 
