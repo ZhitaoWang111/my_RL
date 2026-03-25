@@ -27,7 +27,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. 开发者按照文档执行后，`evo-rl` conda 环境可成功激活，所有依赖可导入
   2. pi05_base、siglip-so400m-patch14-384、gemma-3-270m 三个预训练权重通过脚本/文档下载到位
   3. 环境验证命令在 10 秒内输出 CUDA 可用、依赖版本、权重路径均通过的确认信息
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Weight download script + user verification (ENV-02)
+- [ ] 01-02-PLAN.md — Environment verification script + setup documentation (ENV-01, ENV-03)
 
 ### Phase 2: Training Pipeline
 **Goal**: pen Round 1 三步训练流水线（value-train → value-infer → policy-train）在全部三类硬件上可独立运行完毕
@@ -66,7 +69,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Environment | 0/? | Not started | - |
+| 1. Environment | 0/2 | Planning complete | - |
 | 2. Training Pipeline | 0/? | Not started | - |
 | 3. Multi-task | 0/? | Not started | - |
 | 4. Closed Loop | 0/? | Not started | - |
