@@ -32,5 +32,24 @@
   },
   "resolve_model_ids": "omit",
   "mode": "yolo",
-  "granularity": "coarse"
+  "granularity": "coarse",
+  "planning": {
+    "sub_repos": [
+      "Evo-RL"
+    ]
+  },
+  "sub_repos": [
+    "Evo-RL",
+    "Evo-RL_init",
+    "awr",
+    "baselines",
+    "dqc",
+    "lerobot",
+    "ogbench",
+    "qc",
+    "qc_init",
+    "real-time-chunking-kinetix",
+    "spark_0311",
+    "spark_0312"
+  ]
 }

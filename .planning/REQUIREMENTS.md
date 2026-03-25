@@ -50,11 +50,16 @@
 
 ## Traceability
 
-_由 roadmap 创建后填充_
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ENV-01 ~ ENV-03 | TBD | Pending |
-| TRAIN-01 ~ TRAIN-04 | TBD | Pending |
-| TASK-01 ~ TASK-02 | TBD | Pending |
-| LOOP-01 ~ LOOP-02 | TBD | Pending |
+| ENV-01 | Phase 1 | Pending |
+| ENV-02 | Phase 1 | Pending |
+| ENV-03 | Phase 1 | Pending |
+| TRAIN-01 | Phase 2 | Pending |
+| TRAIN-02 | Phase 2 | Pending |
+| TRAIN-03 | Phase 2 | Pending |
+| TRAIN-04 | Phase 2 | Pending |
+| TASK-01 | Phase 3 | Pending |
+| TASK-02 | Phase 3 | Pending |
+| LOOP-01 | Phase 4 | Pending |
+| LOOP-02 | Phase 4 | Pending |
