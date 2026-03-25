@@ -13,10 +13,10 @@
 
 ### 训练脚本（TRAIN）
 
-- [ ] **TRAIN-01**: pen Round 1 可在单卡 RTX 4090 上完整运行（value-train → value-infer → policy-train 三步）
-- [ ] **TRAIN-02**: pen Round 1 可在多卡 A100 上完整运行
-- [ ] **TRAIN-03**: pen Round 1 可在华为 NPU（8 卡）上完整运行
-- [ ] **TRAIN-04**: 三套训练脚本（4090.sh / A100.sh / npu.sh）独立维护，batch size 和 GPU 配置按硬件适配
+- [x] **TRAIN-01**: pen Round 1 可在单卡 RTX 4090 上完整运行（value-train → value-infer → policy-train 三步）
+- [x] **TRAIN-02**: pen Round 1 可在多卡 A100 上完整运行
+- [x] **TRAIN-03**: pen Round 1 可在华为 NPU（8 卡）上完整运行
+- [x] **TRAIN-04**: 三套训练脚本（4090.sh / A100.sh / npu.sh）独立维护，batch size 和 GPU 配置按硬件适配
 
 ### 多任务通用化（TASK）
 
@@ -55,10 +55,10 @@
 | ENV-01 | Phase 1 | Pending |
 | ENV-02 | Phase 1 | Pending |
 | ENV-03 | Phase 1 | Pending |
-| TRAIN-01 | Phase 2 | Pending |
-| TRAIN-02 | Phase 2 | Pending |
-| TRAIN-03 | Phase 2 | Pending |
-| TRAIN-04 | Phase 2 | Pending |
+| TRAIN-01 | Phase 2 | Complete |
+| TRAIN-02 | Phase 2 | Complete |
+| TRAIN-03 | Phase 2 | Complete |
+| TRAIN-04 | Phase 2 | Complete |
 | TASK-01 | Phase 3 | Pending |
 | TASK-02 | Phase 3 | Pending |
 | LOOP-01 | Phase 4 | Pending |
