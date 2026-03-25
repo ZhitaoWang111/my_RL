@@ -56,9 +56,9 @@ Plans:
   2. train_kai0_npu.sh 在 NPU 上完整跑通 3 步流水线（Kai0 数据集，全 14 维）
   3. train_cloth_npu.sh 在 NPU 上完整跑通 3 步流水线（fold_cloth，从 Kai0 checkpoint 加载 policy）
   4. 两个脚本特征选择均为全 14 维（STATE_SLICE="", ACTION_SLICE="", EXCLUDE_CAMERAS=""）
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
-- [ ] 03-01-PLAN.md — NPU rsync 脚本（rsync_to_npu.sh、rsync_data_to_npu.sh）[TRAIN-03]
+- [x] 03-01-PLAN.md — NPU rsync 脚本（rsync_to_npu.sh、rsync_data_to_npu.sh）[TRAIN-03]
 - [ ] 03-02-PLAN.md — NPU 训练脚本（train_kai0_npu.sh、train_cloth_npu.sh）[TRAIN-03]
 
 ### Phase 4: Closed Loop
@@ -80,5 +80,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Environment | 0/1 | Planning complete | - |
 | 2. Training Pipeline | 1/2 | In Progress|  |
-| 3. NPU Training | 0/2 | Planning complete | - |
+| 3. NPU Training | 1/2 | In Progress|  |
 | 4. Closed Loop | 0/? | Not started | - |
