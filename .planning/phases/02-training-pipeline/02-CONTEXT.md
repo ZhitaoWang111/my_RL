@@ -141,11 +141,12 @@ cd /moganshan/afs_a/lai/Evo-RL
 pip install -e .
 ```
 
-### NPU 版参考（train_pen_npu.sh 关键差异）
-- `ASCEND_RT_VISIBLE_DEVICES` 替代 `CUDA_VISIBLE_DEVICES`
-- `source .venv/bin/activate` 替代 conda activate
-- `WORK_DIR="/home/ma-user/work/wzt/Evo-RL"`
-- `NUM_GPUS=2`（NPU 只用 2 卡）
+### A100 与 4090 脚本的关键差异（在 4090.sh 基础上改这几行）
+- `WORK_DIR="/moganshan/afs_a/lai/Evo-RL"` （硬编码，非动态 dirname）
+- `NUM_GPUS=4`
+- `CUDA_VISIBLE_DEVICES=0,1,2,3`
+- `OUTPUT_DIR="${WORK_DIR}/outputs/pen_round1_A100"`
+- 注释标题改为 "4x A100 (80GB)"
 
 </specifics>
 
@@ -155,9 +156,10 @@ pip install -e .
 **Downstream agents MUST read these before planning or implementing.**
 
 ### 训练脚本参考
-- `Evo-RL/scripts/train_pen_4090.sh` — A100 脚本的直接模板（路径约定、参数结构、3 阶段逻辑全复用）
-- `Evo-RL/scripts/train_pen_npu.sh` — NPU 版参考（accelerate launch 差异、环境变量）
+- `Evo-RL/scripts/train_pen_4090.sh` — **A100 脚本的唯一直接模板**（路径约定、参数结构、CUDA/accelerate launch 写法、3 阶段逻辑全复用）
 - `Evo-RL/scripts/smoke_test_4090.sh` — smoke test 参考（验证逻辑）
+
+> ⚠️ **不要参考 `train_pen_npu.sh`**：该脚本使用华为 NPU 专有环境变量（`ASCEND_RT_VISIBLE_DEVICES`）、`.venv` 激活方式和 NPU 特有路径，与 NVIDIA GPU（N 卡）训练不兼容。A100 是 NVIDIA 卡，完全沿用 4090 脚本的 CUDA/accelerate 写法。
 
 ### 项目配置
 - `Evo-RL/pyproject.toml` — pip install -e . 的依赖来源
