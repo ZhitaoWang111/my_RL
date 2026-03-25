@@ -20,17 +20,16 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Phase Details
 
 ### Phase 1: Environment
-**Goal**: 开发者可以在任意目标机器上一步重建训练环境并验证就绪
+**Goal**: 数据集兼容性检查 — 确认 fold_cloth (v3.0) 与 Kai0_dataset (v2.1) 能否进入 3 阶段训练流水线，并明确 Kai0 的阻塞项和转换步骤
 **Depends on**: Nothing (first phase)
 **Requirements**: ENV-01, ENV-02, ENV-03
 **Success Criteria** (what must be TRUE):
-  1. 开发者按照文档执行后，`evo-rl` conda 环境可成功激活，所有依赖可导入
-  2. pi05_base、siglip-so400m-patch14-384、gemma-3-270m 三个预训练权重通过脚本/文档下载到位
-  3. 环境验证命令在 10 秒内输出 CUDA 可用、依赖版本、权重路径均通过的确认信息
-**Plans:** 2 plans
+  1. `python Evo-RL/scripts/check_datasets.py` 运行输出兼容性报告，fold_cloth 显示 COMPATIBLE，Kai0 显示 NEEDS CONVERSION
+  2. Kai0 的 4 个阻塞项（LFS 指针、v2.1 版本、文件命名、stats.json 缺失）全部有编号和可执行的修复命令
+  3. 脚本无外部依赖（stdlib only），在任意有 Python 3.10 的环境中均可运行
+**Plans:** 1 plan
 Plans:
-- [ ] 01-01-PLAN.md — Weight download script (download_weights.sh) + A100 rsync script (rsync_to_a100.sh) [ENV-02]
-- [ ] 01-02-PLAN.md — Environment verification script (verify_env.py) + setup documentation (setup_guide.md) [ENV-01, ENV-03]
+- [ ] 01-01-PLAN.md — Dataset compatibility checker script (check_datasets.py) [ENV-01]
 
 ### Phase 2: Training Pipeline
 **Goal**: pen Round 1 三步训练流水线（value-train → value-infer → policy-train）在全部三类硬件上可独立运行完毕
@@ -69,7 +68,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Environment | 0/2 | Planning complete | - |
+| 1. Environment | 0/1 | Planning complete | - |
 | 2. Training Pipeline | 0/? | Not started | - |
 | 3. Multi-task | 0/? | Not started | - |
 | 4. Closed Loop | 0/? | Not started | - |
