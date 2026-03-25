@@ -42,7 +42,7 @@ Plans:
   4. 三个脚本各自独立维护，batch size 和 GPU 配置分别按设备显存适配，互不耦合
 **Plans:** 1/2 plans executed
 Plans:
-- [ ] 02-01-PLAN.md — A100 部署脚本（rsync_to_a100.sh、rsync_weights_to_a100.sh、setup_a100_env.sh）[TRAIN-02, TRAIN-04]
+- [x] 02-01-PLAN.md — A100 部署脚本（rsync_to_a100.sh、rsync_weights_to_a100.sh、setup_a100_env.sh）[TRAIN-02, TRAIN-04]
 - [x] 02-02-PLAN.md — A100 训练脚本（train_pen_A100.sh、smoke_test_A100.sh）[TRAIN-01, TRAIN-02, TRAIN-03, TRAIN-04]
 
 ### Phase 3: Multi-task
